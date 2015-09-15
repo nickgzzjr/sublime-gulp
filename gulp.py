@@ -243,13 +243,13 @@ class GulpLastCommand(GulpCommand):
         file = f.read()
         f.close()
         file = file.split(':')
-        if len(file) is 2:
+        if len(file) = 2:
             self.working_dir = file[1]
             self.task_name = file[0]
             self.task_flag = ''
             self.run_gulp_task()
         else:
-            self.error_message('No task found found.')
+            self.error_message('No task found.')
 
 class GulpKillCommand(BaseCommand):
     def work(self):
