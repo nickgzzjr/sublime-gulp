@@ -426,7 +426,7 @@ class ProcessCache():
             fn(process)
 
     @classmethod
-    def last(cls, fn):
+    def last(cls):
         return process[len(process) - 1]
 
     @classmethod

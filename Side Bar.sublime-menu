@@ -5,9 +5,10 @@
         [
             { "caption": "Run Default Task", "command": "gulp", "args": { "task_name": "default", "paths": [] } },
             { "caption": "Run Arbitrary Task", "command": "gulp_arbitrary", "args": { "paths": [] } },
+            { "caption": "Delete Last Task","command": "gulp_last", "args": { "paths": [] } },
             { "caption": "-" },
             { "caption": "List Tasks to Run","command": "gulp", "args": { "paths": [] } },
-            { "caption": "Delete Cache","command": "gulp_delete_cache", "args": { "paths": [] } },
+            { "caption": "List Tasks to Run","command": "gulp", "args": { "paths": [] } },
             { "caption": "Kill All Gulp Tasks", "command": "gulp_kill" },
             { "caption": "-" },
             { "caption": "List Gulp Plugins","command": "gulp_plugins" }
