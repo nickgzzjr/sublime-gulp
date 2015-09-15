@@ -196,7 +196,7 @@ class GulpCommand(BaseCommand):
         Thread(target = self.run_process, args = (task, )).start()
 
     def construct_gulp_task(self):
-        last_task_name = task_name
+        last_task_name = self.task_name
         self.show_running_status_in_output_panel()
         return r"gulp %s %s" % (self.task_name, self.task_flag)
 
