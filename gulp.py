@@ -240,10 +240,12 @@ class GulpArbitraryCommand(GulpCommand):
 class GulpLastCommand(GulpCommand):
     def work(self):
         f = open(os.path.join(self.working_dir, 'sublime-gulp-last.cache'), 'r' )
-        file = f.read()
+        last = f.read()
         f.close()
-        file = file.split(':')
-        if len(file) = 2:
+        last = last.split(':')
+        print(last)
+        print(len(last))
+        if len(last) == 2:
             self.working_dir = file[1]
             self.task_name = file[0]
             self.task_flag = ''
