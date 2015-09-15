@@ -9,12 +9,12 @@
       "args": { "silent": true }
     },
     {
-      "caption": "Gulp: Run last task",
-      "command": "gulp_last_command"
-    },
-    {
       "caption": "Gulp: Run arbitrary task",
       "command": "gulp_arbitrary"
+    },
+    {
+      "caption": "Gulp: Run last task",
+      "command": "gulp_last_command"
     },
     {
       "caption": "Gulp: Show panel",
