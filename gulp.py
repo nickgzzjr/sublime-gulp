@@ -236,8 +236,9 @@ class GulpArbitraryCommand(GulpCommand):
 
 class GulpLastCommand(GulpCommand):
     def work(self):
-        if self.task_name:
-            self.run_gulp_task()
+        cache = ProcessCache.each()
+        if cache[0].task_name:
+            cache[0].run_gulp_task()
 
 class GulpKillCommand(BaseCommand):
     def work(self):
