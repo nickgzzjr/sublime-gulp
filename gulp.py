@@ -242,8 +242,8 @@ class GulpLastCommand(GulpCommand):
         f = open(os.path.join(self.working_dir, 'sublime-gulp-last.cache'), 'r' )
         last = f.read()
         f.close()
-        last = last.split(':')
         print(last)
+        last = last.split(':')
         print(len(last))
         if len(last) == 2:
             self.working_dir = file[1]
