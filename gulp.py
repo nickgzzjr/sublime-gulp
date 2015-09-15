@@ -240,7 +240,7 @@ last_task_name = ''
 
 class GulpLastCommand(GulpCommand):
     def work(self):
-        self.task_name = task_name
+        self.task_name = last_task_name
         self.task_flag = ''
         self.run_gulp_task()
 
