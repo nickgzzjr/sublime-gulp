@@ -122,6 +122,9 @@ class BaseCommand(sublime_plugin.WindowCommand):
     def show_panel(self):
         self.window.run_command("show_panel", { "panel": "output.gulp_output" })
 
+    def last_command(self):
+        self.window.run_command("last_command", { "panel": "output.gulp_output" })
+
     # Sync/async calls
     def defer_sync(self, fn):
         self.set_timeout(fn, 0)
