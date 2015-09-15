@@ -196,6 +196,7 @@ class GulpCommand(BaseCommand):
         Thread(target = self.run_process, args = (task, )).start()
 
     def construct_gulp_task(self):
+        last_task_name = task_name
         self.show_running_status_in_output_panel()
         return r"gulp %s %s" % (self.task_name, self.task_flag)
 
@@ -234,11 +235,14 @@ class GulpArbitraryCommand(GulpCommand):
             self.task_flag = ''
             self.run_gulp_task()
 
+
+last_task_name = ''
+
 class GulpLastCommand(GulpCommand):
     def work(self):
-        cache = ProcessCache.last()
-        if cache and cache.task_name:
-            cache.run_gulp_task()
+        self.task_name = task_name
+        self.task_flag = ''
+        self.run_gulp_task()
 
 class GulpKillCommand(BaseCommand):
     def work(self):
@@ -424,11 +428,6 @@ class ProcessCache():
     def each(cls, fn):
         for process in cls._procs:
             fn(process)
-
-    @classmethod
-    def last(cls):
-        print(cls._procs)
-        return cls._procs[len(cls._procs)]
 
     @classmethod
     def empty(cls):
