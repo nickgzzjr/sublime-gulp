@@ -242,12 +242,10 @@ class GulpLastCommand(GulpCommand):
         f = open('sublime-gulp-last.cache', 'r' )
         last = f.read()
         f.close()
-        print(last)
         last = last.split(':')
-        print(len(last))
         if len(last) == 2:
-            self.working_dir = file[1]
-            self.task_name = file[0]
+            self.task_name = last[0]
+            self.working_dir = last[1]
             self.task_flag = ''
             self.run_gulp_task()
         else:
