@@ -11,8 +11,6 @@ import webbrowser
 
 is_sublime_text_3 = int(sublime.version()) >= 3000
 
-last_task_name = ''
-
 if is_sublime_text_3:
     from .base_command import BaseCommand
     from .progress_notifier import ProgressNotifier
@@ -198,7 +196,9 @@ class GulpCommand(BaseCommand):
         Thread(target = self.run_process, args = (task, )).start()
 
     def construct_gulp_task(self):
-        last_task_name = self.task_name
+        f = open( 'sublime-gulp-last.cache', 'w' )
+        f.write( self.task_name )
+        f.close()
         self.show_running_status_in_output_panel()
         return r"gulp %s %s" % (self.task_name, self.task_flag)
 
@@ -239,9 +239,13 @@ class GulpArbitraryCommand(GulpCommand):
 
 class GulpLastCommand(GulpCommand):
     def work(self):
-        self.task_name = last_task_name
-        self.task_flag = ''
-        self.run_gulp_task()
+        f = open( 'sublime-gulp-last.cache', 'r' )
+        last_task_name = f.read()
+        if last_task_name:
+            self.task_name = last_task_name
+            self.task_flag = ''
+            self.run_gulp_task()
+        f.close()
 
 class GulpKillCommand(BaseCommand):
     def work(self):
