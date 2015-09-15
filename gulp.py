@@ -234,7 +234,7 @@ class GulpArbitraryCommand(GulpCommand):
             self.task_flag = ''
             self.run_gulp_task()
 
-class GulpKillCommand(BaseCommand):
+class GulpLastCommand(BaseCommand):
     def work(self):
         self.last_command()
 
