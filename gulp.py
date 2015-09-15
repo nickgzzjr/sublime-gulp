@@ -196,7 +196,7 @@ class GulpCommand(BaseCommand):
         Thread(target = self.run_process, args = (task, )).start()
 
     def construct_gulp_task(self):
-        f = open(os.path.join(self.working_dir, 'sublime-gulp-last.cache'), 'w' )
+        f = open('sublime-gulp-last.cache', 'w' )
         f.write( self.task_name + ':' + self.working_dir )
         f.close()
         self.show_running_status_in_output_panel()
@@ -239,7 +239,7 @@ class GulpArbitraryCommand(GulpCommand):
 
 class GulpLastCommand(GulpCommand):
     def work(self):
-        f = open(os.path.join(self.working_dir, 'sublime-gulp-last.cache'), 'r' )
+        f = open('sublime-gulp-last.cache', 'r' )
         last = f.read()
         f.close()
         print(last)
