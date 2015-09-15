@@ -234,6 +234,9 @@ class GulpArbitraryCommand(GulpCommand):
             self.task_flag = ''
             self.run_gulp_task()
 
+class GulpKillCommand(BaseCommand):
+    def work(self):
+        self.last_command()
 
 class GulpKillCommand(BaseCommand):
     def work(self):
@@ -328,6 +331,9 @@ class CrossPlatformProcess():
         self.path = Env.get_path(sublime_command.exec_args)
         self.last_command = ""
         self.failed = False
+
+    def last_command(self):
+        self.run(self.last_command)
 
     def run(self, command):
         with Dir.cd(self.working_dir):
