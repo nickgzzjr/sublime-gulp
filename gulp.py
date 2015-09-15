@@ -11,6 +11,8 @@ import webbrowser
 
 is_sublime_text_3 = int(sublime.version()) >= 3000
 
+last_task_name = ''
+
 if is_sublime_text_3:
     from .base_command import BaseCommand
     from .progress_notifier import ProgressNotifier
@@ -234,9 +236,6 @@ class GulpArbitraryCommand(GulpCommand):
             self.task_name = task_name
             self.task_flag = ''
             self.run_gulp_task()
-
-
-last_task_name = ''
 
 class GulpLastCommand(GulpCommand):
     def work(self):
