@@ -197,7 +197,7 @@ class GulpCommand(BaseCommand):
 
     def construct_gulp_task(self):
         f = open(os.path.join(self.working_dir, 'sublime-gulp-last.cache'), 'w' )
-        f.write( self.task_name )
+        f.write( self.task_name + ':' + self.working_dir )
         f.close()
         self.show_running_status_in_output_panel()
         return r"gulp %s %s" % (self.task_name, self.task_flag)
@@ -240,12 +240,16 @@ class GulpArbitraryCommand(GulpCommand):
 class GulpLastCommand(GulpCommand):
     def work(self):
         f = open(os.path.join(self.working_dir, 'sublime-gulp-last.cache'), 'r' )
-        last_task_name = f.read()
-        if last_task_name:
-            self.task_name = last_task_name
+        file = f.read()
+        f.close()
+        file = file.split(':')
+        if len(file) == 2:
+            self.working_dir = file[1]
+            self.task_name = file[0]
             self.task_flag = ''
             self.run_gulp_task()
-        f.close()
+        else:
+            self.error_message('No task found found.')
 
 class GulpKillCommand(BaseCommand):
     def work(self):
