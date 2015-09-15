@@ -427,7 +427,8 @@ class ProcessCache():
 
     @classmethod
     def last(cls):
-        return cls._procs[len(cls._procs) - 1]
+        print cls._procs
+        # return cls._procs[len(cls._procs)]
 
     @classmethod
     def empty(cls):
